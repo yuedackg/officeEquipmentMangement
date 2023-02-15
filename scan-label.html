@@ -154,8 +154,9 @@
                         //Quaggaのスキャンイベント
                         Quagga.onDetected((result) => {
                             //スキャンを止める
-                            console.log(result.codeResult.code);
-
+                            // console.log(result.codeResult.code);
+                            console.log( "ueda fix -> " , result.codeResult);
+                            
                             if (this.blnScaning == false) {
                                 //遅延してスキャンデータが来た場合は無視
                                 return;
@@ -407,14 +408,25 @@
                 this.wrapperElement.style.visibility = "hidden";
                 this.validatainWkCnt = 0;
                 this.validationCode = "";
-                console.log( "Object terminated.")
+                console.log("Object terminated.")
             }
         }
 
         //エントリーポイント
         new BarcodeReader(document.getElementById("barcode-scanner"), 640, 480, 300, 200, 200, 100, 2, 100, 3);
     </script>
-
+    <table>
+        <thead>
+            <tr>
+                <th>スキャンしたバーコード</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 
 </html>
