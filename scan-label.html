@@ -82,9 +82,8 @@
                 locate: true,
                 decoder: {
                     readers: ["ean_reader", "ean_8_reader"],
-                    // multiple: false, //同時に複数のバーコードを解析しない
-                    // 2023.2.15 fix
                     multiple: false, //同時に複数のバーコードを解析しない
+
                 },
                 locator: {
                     halfSample: false,
@@ -407,6 +406,7 @@
                 this.wrapperElement.style.visibility = "hidden";
                 this.validatainWkCnt = 0;
                 this.validationCode = "";
+                console.log( "Object terminated.")
             }
         }
 
