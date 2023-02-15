@@ -157,7 +157,11 @@
                             // console.log(result.codeResult.code);
                             console.log( "ueda fix -> " , result.codeResult);
                             let item = document.getElementById( "txtOutput")
-                            item.innerHTML = "★★★"
+                            item.value = "★★★"
+                            // ここから下に、テーブルに追加するコードを書く
+                            // 参考URL　https://shanabrian.com/web/javascript/table-insertrow.php
+
+
                             if (this.blnScaning == false) {
                                 //遅延してスキャンデータが来た場合は無視
                                 return;
