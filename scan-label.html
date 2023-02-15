@@ -160,7 +160,17 @@
                             item.value = "★★★"
                             // ここから下に、テーブルに追加するコードを書く
                             // 参考URL　https://shanabrian.com/web/javascript/table-insertrow.php
+                            // table要素を取得
+var tableElem = document.getElementById('sample-table');
 
+// tbody要素にtr要素（行）を最後に追加
+var trElem = tableElem.tBodies[0].insertRow(-1);
+
+// td要素を追加
+var cellElem = trElem.insertCell(0);
+
+// td要素にテキストを追加
+cellElem.appendChild(document.createTextNode('セル'));
 
                             if (this.blnScaning == false) {
                                 //遅延してスキャンデータが来た場合は無視
@@ -420,7 +430,7 @@
         //エントリーポイント
         new BarcodeReader(document.getElementById("barcode-scanner"), 640, 480, 300, 200, 200, 100, 2, 100, 3);
     </script>
-    <table>
+    <table id="sample-table">
         <thead>
             <tr>
                 <th>スキャンしたバーコード</th>
