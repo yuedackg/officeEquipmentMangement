@@ -1,0 +1,15 @@
+:root {
+            
+}
+
+* {
+    box-sizing: border-box;
+    border: solid 1px gray;
+}
+
+main>div {
+    width: 100%;
+    font-size: xx-large;
+    padding: 10px;
+
+}
