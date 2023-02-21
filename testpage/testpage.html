@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./testpage.js"></script>
+    <script type="text/javascript">
+        function proc() {
+            elem = document.getElementById("output");
+            elem.innerText = "JavaScriptが実行されました。";
+        }
+        function input() {
+
+        }
+        var a = new Array();
+
+        // HTML文章の読み込み完了時に実行（※１）
+        function load() {
+            // localStoprageからキーyoteiに対する値を読み出す
+            var ls = localStorage.getItem("yotei");
+            if (ls != null) {
+                // 読み出した値をJSON.parseして配列に代入
+                a = JSON.parse(ls);
+            } else {
+                a = [];
+            }
+            show();
+        }
+
+        // 「値を入れたらクリック」ボタンをクリック時に実行（※４）
+        function input() {
+            if (document.getElementById("input1").value == "" || document.getElementById("input2").value == "") {
+                alert("入力値が空白です");
+            } else {
+                a.push({ "gappi": document.getElementById("input1").value, "memo": document.getElementById("input2").value });
+                save();
+            }
+        }
+
+        // 「削除」ボタンがクリックされたら実行（※６）
+        function deleteValue(x) {
+            a.splice(x, 1);
+            save();
+        }
+
+        // 配列aの要素を昇順に並べてテーブル形式で画面に表示（※３）
+        function show() {
+            var s = '<table border ' +
+                'cellpadding = "5" ' +
+                '<tr><th>月日</th><th>内容</th><th>削除</th></tr>';
+            sorting();
+
+            for (var i = 0; i < a.length; i++) {
+                s += '<tr>';
+                for (var p in a[i]) {
+                    s += '<td>' + a[i][p] + '</td>';
+                }
+
+                s += '<td><button type="button" onclick="deleteValue(' + i + ')">削除</button></td>';
+                s += '</tr>';
+
+            }
+
+            s += '</table>';
+            document.getElementById("output").innerHTML = s;
+        }
+
+
+        // 配列aをlocalStorageに保存した後、昇順に並べて画面に表示（※５）
+        function save() {
+            localStorage.setItem("yotei", JSON.stringify(a));
+            show();
+        }
+
+        // 配列の要素を昇順に並び替え（※２）
+        function sorting() {
+            for (var i = 0; i < a.length; i++) {
+                a[i] = JSON.stringify(a[i]);
+            }
+            a.sort();
+            for (i = 0; i < a.length; i++) {
+                a[i] = JSON.parse(a[i]);
+            }
+        }
+    </script>
+
+</head>
+
+<body onload="load();">
+    <script>
+        isCheckWebStorage();
+    </script>
+    <hr>
+    <section>
+        <form>
+            月日：<input type="date" id="input1"><br>
+            内容：<input type="text" id="input2"><br>
+            <button type="button" onClick="input()">予定を登録</button>
+        </form>
+
+        <div id="output">
+            <table border cellpadding="5">
+                <tr>
+                    <th>月日</th>
+                    <th>内容</th>
+                    <th>削除</th>
+                </tr>
+            </table>
+        </div>
+    </section>
+</body>
+
+</html>
