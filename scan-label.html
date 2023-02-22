@@ -14,6 +14,39 @@
     <div id="barcode-scanner"></div>
     <script src="https://cdn.jsdelivr.net/npm/@ericblade/quagga2/dist/quagga.js"></script>
     <script>
+        var DBName = "DBScanList"
+        var barcodelist = new Array();
+
+        function load(){
+            if (ls = localStorage.getItem(DBName)){
+                if(ls !=null){
+                    barcodelist = JSON.parse(ls);
+
+                }else {
+                    barcodelist=[];
+
+                }
+
+                show();
+            }
+        }
+
+        function save(){
+            localStorage.setItem( DBName, JSON.stringify(barcodelist));
+            show();
+        }
+
+        function entry_db(codeno){
+            if(codeno == null){
+                ewinsow.alert("qwe");
+
+            }else {
+                barcodelist.push({
+                    "code": codeno
+                });
+            }
+            save();
+        }
         class BarcodeReader {
 
             //競合する場合は修正する
@@ -35,7 +68,7 @@
             messageElement = null;//エラー時メッセージがinnerHTMLとしてセットされる
             blnCameraInit = false;//カメラ初期化が正常終了したかどうか
             video = null;
-            scanInterval = 100;//スキャンインターバル
+            scanInterval = 100000;//スキャンインターバル
             validationCnt = 3; //スキャンチェック回数
             validatainWkCnt = 0;//スキャンチェックワーク(回数)
             validationCode = "";//スキャンチェックワーク(コード)
