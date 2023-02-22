@@ -14,45 +14,6 @@
     <div id="barcode-scanner"></div>
     <script src="https://cdn.jsdelivr.net/npm/@ericblade/quagga2/dist/quagga.js"></script>
     <script>
-        var DBName = "DBScanList"
-        var barcodelist = new Array();
-
-        function load(){
-            // ローカルストレージが使用できるか判断する
-            if ( ls = localStorage.getItem(DBName)){
-                if ( ls != null){
-                    // データベースを読めるようにする
-                    barcodelist = JSON.parse(ls);
-
-                }else {
-                    // 空のデータベースをつくる
-                    barcodelist=[];
-
-                }
-                // 表示する
-                show();
-            }
-
-        }
-        
-        function save(){
-            localStorage.setItem( DBName, JSON.stringify( barcodelist));
-            show();
-            
-        }
-
-        function entry_db( codeno){
-            if (codeno == null ){
-                window.alert( "登録するデータがありません");
-
-            }else {
-                barcodelist.push({
-                    "code": codeno
-                });
-            }
-            save();
-        }
-
         class BarcodeReader {
 
             //競合する場合は修正する
@@ -194,25 +155,23 @@
                         Quagga.onDetected((result) => {
                             //スキャンを止める
                             // console.log(result.codeResult.code);
-                            console.log("ueda fix -> ", result.codeResult);
-                            let item = document.getElementById("txtOutput")
+                            console.log( "ueda fix -> " , result.codeResult);
+                            let item = document.getElementById( "txtOutput")
                             item.value = "★★★"
                             // ここから下に、テーブルに追加するコードを書く
                             // 参考URL　https://shanabrian.com/web/javascript/table-insertrow.php
                             // table要素を取得
-                            var tableElem = document.getElementById('sample-table');
+var tableElem = document.getElementById('sample-table');
 
-                            // tbody要素にtr要素（行）を最後に追加
-                            var trElem = tableElem.tBodies[0].insertRow(-1);
+// tbody要素にtr要素（行）を最後に追加
+var trElem = tableElem.tBodies[0].insertRow(-1);
 
-                            // td要素を追加
-                            var cellElem = trElem.insertCell(0);
+// td要素を追加
+var cellElem = trElem.insertCell(0);
 
-                            // td要素にテキストを追加
-                            cellElem.appendChild(document.createTextNode('セル'));
-                            
-                            // スキャン画像をDBに登録
-                                entry_db( "1234567890");
+// td要素にテキストを追加
+cellElem.appendChild(document.createTextNode('セル'));
+
 
 
                             if (this.blnScaning == false) {
@@ -472,10 +431,6 @@
 
         //エントリーポイント
         new BarcodeReader(document.getElementById("barcode-scanner"), 640, 480, 300, 200, 200, 100, 2, 100, 3);
-        function shougou() {
-            window.alert("hit shougou key.");
-
-        }
     </script>
     <table id="sample-table">
         <thead>
@@ -491,9 +446,6 @@
 
     </table>
     <input type="text" id="txtOutput" /> ver.10:16
-    <button onclick="equipmentTouroku();">登録</button>
-    <button onclick="shougou();">照合</button>
-
 </body>
 
 </html>
