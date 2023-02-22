@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<script src="entry.js"></script>
+<link rel="stylesheet" href="css/entry.css">
+
+</head>
+
+<!-- 読み込んだ時にテーブルを表示させる関数を設定 -->
+<body onload="load();">
+<form >
+<div class="container">
+<div class="element">備品名：</div>
+<input type="text" id="name">
+<span class="description">※備品名称を入力する</span><br>
+</div>
+<div class="container">
+<div class="element">備品数量：</div>
+<input type="text" id="kosu">
+<span class="description">※同形式の備品の数量を入力する</span><br>
+</div>
+<div class="container">
+<div class="element">備品番号：</div>
+<input type="text" id="code">
+<span class="description">※備品の共通番号を入力</span><br>
+</div>
+<button type="button" onclick="entry()">備品を登録</button>
+</form>
+<table border="1" cellpadding="5" id="BihinTable">
+<thead>
+<th>備品番号</th>
+<th>備品名</th>
+<th>操作</th>
+</thead>
+<!-- 備品はここから下にJavaScriptで追加 -->
+<tbody id="tbody">
+
+</tbody>
+
+</table>
+</body>
+
+</html>

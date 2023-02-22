@@ -1,0 +1,14 @@
+.container {
+display: flex;
+flex-wrap: wrap;
+}
+
+.element {
+width: 10ex;
+}
+
+.description {
+color: red;
+font-weight: 900;
+
+}
