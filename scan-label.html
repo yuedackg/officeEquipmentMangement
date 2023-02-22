@@ -52,6 +52,7 @@
             }
             save();
         }
+
         class BarcodeReader {
 
             //競合する場合は修正する
@@ -73,7 +74,7 @@
             messageElement = null;//エラー時メッセージがinnerHTMLとしてセットされる
             blnCameraInit = false;//カメラ初期化が正常終了したかどうか
             video = null;
-            scanInterval = 100000;//スキャンインターバル
+            scanInterval = 100;//スキャンインターバル
             validationCnt = 3; //スキャンチェック回数
             validatainWkCnt = 0;//スキャンチェックワーク(回数)
             validationCode = "";//スキャンチェックワーク(コード)
@@ -192,7 +193,7 @@
                         //Quaggaのスキャンイベント
                         Quagga.onDetected((result) => {
                             //スキャンを止める
-                            console.log(result.codeResult.code);
+                            // console.log(result.codeResult.code);
                             console.log("ueda fix -> ", result.codeResult);
                             let item = document.getElementById("txtOutput")
                             item.value = "★★★"
@@ -208,8 +209,10 @@
                             var cellElem = trElem.insertCell(0);
 
                             // td要素にテキストを追加
-                            cellElem.appendChild(document.createTextNode(result.codeResult.code));
-
+                            cellElem.appendChild(document.createTextNode('セル'));
+                            
+                            // スキャン画像をDBに登録
+                                entry_db( "1234567890");
 
 
                             if (this.blnScaning == false) {
@@ -229,16 +232,6 @@
                                         //コードをセット
                                         this.inputElement.value = result.codeResult.code;
                                         console.log("scan data !!")
-                                        var tableElem = document.getElementById('sample-table');
-
-                                        // tbody要素にtr要素（行）を最後に追加
-                                        var trElem = tableElem.tBodies[0].insertRow(-1);
-
-                                        // td要素を追加
-                                        var cellElem = trElem.insertCell(0);
-
-                                        // td要素にテキストを追加
-                                        cellElem.appendChild(document.createTextNode('sel'));
                                     }
                                 } else {
                                     this.validationCode = result.codeResult.code;
@@ -479,6 +472,10 @@
 
         //エントリーポイント
         new BarcodeReader(document.getElementById("barcode-scanner"), 640, 480, 300, 200, 200, 100, 2, 100, 3);
+        function shougou() {
+            window.alert("hit shougou key.");
+
+        }
     </script>
     <table id="sample-table">
         <thead>
@@ -494,6 +491,9 @@
 
     </table>
     <input type="text" id="txtOutput" /> ver.10:16
+    <button onclick="equipmentTouroku();">登録</button>
+    <button onclick="shougou();">照合</button>
+
 </body>
 
 </html>
