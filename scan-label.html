@@ -18,27 +18,32 @@
         var barcodelist = new Array();
 
         function load(){
-            if (ls = localStorage.getItem(DBName)){
-                if(ls !=null){
+            // ローカルストレージが使用できるか判断する
+            if ( ls = localStorage.getItem(DBName)){
+                if ( ls != null){
+                    // データベースを読めるようにする
                     barcodelist = JSON.parse(ls);
 
                 }else {
+                    // 空のデータベースをつくる
                     barcodelist=[];
 
                 }
-
+                // 表示する
                 show();
             }
-        }
 
+        }
+        
         function save(){
-            localStorage.setItem( DBName, JSON.stringify(barcodelist));
+            localStorage.setItem( DBName, JSON.stringify( barcodelist));
             show();
+            
         }
 
-        function entry_db(codeno){
-            if(codeno == null){
-                ewinsow.alert("qwe");
+        function entry_db( codeno){
+            if (codeno == null ){
+                window.alert( "登録するデータがありません");
 
             }else {
                 barcodelist.push({
