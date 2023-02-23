@@ -16,18 +16,18 @@
     <script>
         var DBName = "DBScanList"
         var barcodelist = new Array();
-        
 
-        function load(){
+
+        function load() {
             // ローカルストレージが使用できるか判断する
-            if ( ls = localStorage.getItem(DBName)){
-                if ( ls != null){
+            if (ls = localStorage.getItem(DBName)) {
+                if (ls != null) {
                     // データベースを読めるようにする
                     barcodelist = JSON.parse(ls);
 
-                }else {
+                } else {
                     // 空のデータベースをつくる
-                    barcodelist=[];
+                    barcodelist = [];
 
                 }
                 // 表示する
@@ -35,18 +35,18 @@
             }
 
         }
-        
-        function save(){
-            localStorage.setItem( DBName, JSON.stringify( barcodelist));
+
+        function save() {
+            localStorage.setItem(DBName, JSON.stringify(barcodelist));
             show();
-            
+
         }
 
-        function entry_db( codeno){
-            if (codeno == null ){
-                window.alert( "登録するデータがありません");
+        function entry_db(codeno) {
+            if (codeno == null) {
+                window.alert("登録するデータがありません");
 
-            }else {
+            } else {
                 barcodelist.push({
                     "code": codeno
                 });
@@ -196,6 +196,9 @@
                             //スキャンを止める
                             // console.log(result.codeResult.code);
                             console.log("ueda fix -> ", result.codeResult);
+                            // fix start here.
+                            document.write(result.codeResult.code);
+                            // fix end.
                             let item = document.getElementById("txtOutput")
                             // item.value = "★★★"
                             item.value = result.codeResult;
@@ -215,10 +218,10 @@
 
                             // td要素にテキストを追加
                             // cellElem.appendChild(document.createTextNode('セル'));
-                    cellElem.appendChild( document.createTextNode( result.codeResult));
+                            cellElem.appendChild(document.createTextNode(result.codeResult));
 
                             // スキャン画像をDBに登録
-                                entry_db( "1234567890");
+                            entry_db("1234567890");
 
 
                             if (this.blnScaning == false) {
