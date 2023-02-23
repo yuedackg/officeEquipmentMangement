@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>備品一覧画面</title>
+    <script src="./js/constant.js"></script>
+    <style>
+        .btnDesign {
+            width: 20px;
+            padding: 5px;
+            border: solid 1px gray;
+            margin: 5px;
+        }
+        .table{
+            margin: 10px;
+
+        }
+    </style>
+    <script>
+        var BihinList = new Array();
+
+        function load(){
+            if ( ls = localStorage.getItem( DBBihin)){
+                if ( ls != null ){
+                    BihinList = JSON.parse( ls);
+
+                }else {
+                    console.log( "DB is null.");
+                    BihinList = [];
+
+                }
+            }
+            show();
+
+        }
+
+        function save(){
+            localStorage.getItem( DBBihin, JSON.stringify( BihinList));
+            show();
+
+        }
+
+        function entry_db( codeno ){
+            if ( code == null ){
+                console.log( "登録するデータがありません");
+
+            }else {
+                BihinList.push({
+                    "code":codeno
+                });
+
+            }
+            save();
+        }
+
+    </script>
+</head>
+
+<body onload="load();">
+    <div class="table">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>備品番号</th>
+                    <th>備品名称</th>
+                    <th>Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <a href="index.html" class="btnDesign">戻る</a>
+</body>
+
+</html>

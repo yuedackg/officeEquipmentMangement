@@ -13,8 +13,9 @@
 <body>
     <div id="barcode-scanner"></div>
     <script src="https://cdn.jsdelivr.net/npm/@ericblade/quagga2/dist/quagga.js"></script>
+    <link rel="stylesheet" href="./js/constant.js">
     <script>
-        var DBName = "DBScanList"
+        // var DBName = "DBScanList"
         var barcodelist = new Array();
 
 
@@ -26,8 +27,11 @@
                     barcodelist = JSON.parse(ls);
 
                 } else {
+                    console.log("DB is not found.");
+                    // document.write("DB is not found.");
                     // 空のデータベースをつくる
                     barcodelist = [];
+
 
                 }
                 // 表示する
@@ -196,9 +200,7 @@
                             //スキャンを止める
                             // console.log(result.codeResult.code);
                             console.log("ueda fix -> ", result.codeResult);
-                            // fix start here.
-                            document.write(result.codeResult.code);
-                            // fix end.
+
                             let item = document.getElementById("txtOutput")
                             // item.value = "★★★"
                             item.value = result.codeResult;
@@ -218,7 +220,7 @@
 
                             // td要素にテキストを追加
                             // cellElem.appendChild(document.createTextNode('セル'));
-                            cellElem.appendChild(document.createTextNode(result.codeResult));
+                            cellElem.appendChild(document.createTextNode(result.codeResult.code));
 
                             // スキャン画像をDBに登録
                             entry_db("1234567890");
