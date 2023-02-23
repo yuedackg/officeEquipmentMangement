@@ -211,11 +211,12 @@
                             var cellElem = trElem.insertCell(0);
 
                             // td要素にテキストを追加
-                            cellElem.appendChild(document.createTextNode('セル'));
+                            // cellElem.appendChild(document.createTextNode('セル'));セル
 
                             // td要素にテキストを追加
-                            cellElem.appendChild(document.createTextNode('セル'));
-                            
+                            // cellElem.appendChild(document.createTextNode('セル'));
+                    cellElem.appendChild( document.createTextNode( result.codeResult));
+
                             // スキャン画像をDBに登録
                                 entry_db( "1234567890");
 
