@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>備品の確認画面</title>
+    <link rel="stylesheet" href="./css/table-design.css">
+    <script src="./js/Constant.js"></script>
+    <script>
+        var DBscan = new Array();
+        var DBBihin = new Array();
+        
+        function load(){
+            var ls = localStorage.getItem(DB_scanListName);
+            if ( ls != null ){
+                DBscan = JSON.parse(ls);
+
+            }else {
+                DBscan=[];
+
+            }
+            ls = localStorage.getItem( DB_BihinListName);
+            if ( ls != null){
+                DBBihin = JSON.parse( ls );
+
+            }else {
+                DBBihin = [];
+
+            }
+            
+            collation ();
+
+        }
+
+        function collation(){
+            
+        }
+    </script>
+</head>
+<body>
+    
+    <table class="table-ichiran">
+        <caption>
+
+        </caption>
+        <thead>
+            <th></th>
+        </thead>
+    </table>
+</body>
+</html>
