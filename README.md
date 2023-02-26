@@ -1,38 +1,19 @@
 # officeEquipmentMangement
 備品管理システム
 
-firebase Hosting serviceを使用する。
-１．Node.jsをInstallする
-２．npm（Node js　Package Manager）を使用してfirebase-toolsをインストールする
-　　npm install -g firebase-tools
+2023.02.xx firebaseを使わないように仕様変更
 
-firebaseでの環境の構築
-１．firebaseサイトにコマンドラインでログイン
-　　firebase login
-２．ckgアカウントでログインをする
+実装していない作業　
 
+scan-label.html
+ 照合ボタンの処理を追加
 
--- project memo
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+備品一覧（print-equipment.html）の処理
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyB1VOG0G6HHyIhcbChEAou4eojFGlyEpgE",
-    authDomain: "myapp-4842c.firebaseapp.com",
-    projectId: "myapp-4842c",
-    storageBucket: "myapp-4842c.appspot.com",
-    messagingSenderId: "729976145013",
-    appId: "1:729976145013:web:b0b11c92f1c783b240243c",
-    measurementId: "G-E777YC4FQP"
-  };
+備品レポート
+　処理の追加
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
+備品管理　→　バーコードを読み込んで登録
+備品管理　→　画面から登録
+備品管理　→　登録備品の削除・変更
+
