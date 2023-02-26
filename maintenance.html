@@ -1,12 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="./js/Constant.js"></script>
+    <script>
+        var DBBihinList = new Array();
+
+        // ページ読み込み時にリストを表示する
+        function load() {
+            console.log("load() start...");
+
+            var ls = localStorage.getItem(DB_BihinListName);
+            console.log("DB Name : " + DB_BihinListName);
+
+            if (ls != null) {
+                DBBihinList = JSON.parse(ls);
+                console.log("load() : data loading.");
+                console.log(DBBihinList);
+
+
+            } else {
+                DBBihinList = [];
+
+            }
+            show();
+
+        }
+
+        // リストを表示する
+        function show() {
+            var myRows = document.getElementById("table-maintenance").getElementsByTagName("tr");
+            max = myRows.length;
+            console.log("max=" + max);
+
+            // 表の要素を削除
+            for (var i = 1; i < max; i++) {
+                myRows.deleteRow(-1);
+
+            }
+
+            // 表へ追加
+            var myTable = document.getElementById("table-maintenance");
+            for (var p of DBBihinList) {
+                console.log(" p -> " + p);
+            }
+            var trElem = myTable.tBodies[0].insertRow(-1);
+            var cellElem1 = trElem.insertCell();
+            cellElem1.appendChild(document.createTextNode());
+
+            var cellElem2 = trElem.insertCell();
+
+        }
+
+    </script>
+    <style>
+        caption,
+        th {
+            border: solid 1px gray;
+        }
+
+        caption {
+            /* width: 20ex; */
+            text-align: center;
+        }
+
+        th {
+            width: 20ex;
+        }
+    </style>
 </head>
-<body>
+
+<body onload="load();">
     <h1>未完成</h1>
+
+    <table id="table-maintenance">
+        <caption>
+            備品操作ページ
+        </caption>
+        <thead>
+            <tr>
+                <th id="th-bangou">備品番号</th>
+                <th id="th-name">備品名</th>
+                <th id="th-operation">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
 </body>
+
 </html>
