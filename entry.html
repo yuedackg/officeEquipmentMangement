@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+    <script src="./js/Constant.js"></script>
+    <script>
+        function load() {
+            if (ls = localStorage.getItem(DB_BihinListName)) {
+                if (ls != null) {
+                    blist = JSON.parse(ls);
+
+                } else {
+                    blist = [];
+
+                }
+            }
+        }
+        function entry() {
+            console.log("button clicked.");
+
+            var dom = document.getElementById("myForm");
+            var domInputs = dom.getElementsByClassName("KanriBango");
+            var domInputsBango = dom.getElementsByClassName("KanriBango");
+            var domInputsMeisho = dom.getElementsByClassName("KanriMeishou");
+
+
+            var maxElements = domInputs.length;
+            for (var i = 0; i < maxElements; i++) {
+                // デバッグ用のコード
+                console.log(" " + domInputsBango[i].value);
+                console.log(" " + domInputsMeisho[i].value);
+
+                // 一覧の中の登録番号と名称が入力されている場合は無視してかまわない
+                if (domInputsBango[i].value == "" && domInputsMeisho[0].value == "") {
+                    console.log("ryouhou null.");
+                    // 両方空白は、エラーではない
+                    // domInputsBango[i].value="not set";
+                    // domInputsBango[i].style.color="#ff0000";
+
+                    // 片方しか入力されていないときは、空欄を埋めてもらうように指示を出す。
+                } else if (domInputsBango[i].value == "" || domInputsMeisho[i].value == "") {
+                    console.log("No " + i + "is not fill.");
+                    // 備品番号のみ空欄の時
+                    if (domInputsBango[i].value == "") {
+                        domInputsBango[i].value = "not set";
+                        domInputsBango[i].style.color = "#ff0000";
+                    }
+                    // 備品名称のみ空欄の時
+                    if (domInputsMeisho[i].value == "") {
+                        domInputsMeisho[i].value = "not set";
+                        domInputsMeisho[i].style.color = "red";
+
+                    }
+
+                } else {
+                    console.log("No " + i + " is data OK.")
+                    // ここで登録プログラムを作成する
+
+                }
+
+            }
+
+
+        }
+    </script>
+</head>
+
+<body onload="load();">
+    <h1>名称登録</h1>
+    <form id="myForm">
+        <table border="1" id="entryTable">
+            <caption>備品登録</caption>
+            <thead>
+                <tr>
+                    <th>番号</th>
+                    <th>管理番号</th>
+                    <th>管理品名称</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td>1</td>
+                    <td><input type="text" class="KanriBango"></td>
+                    <td><input type="text" class="KanriMeishou"></td>
+                </tr>
+
+
+                <tr>
+                    <td>2</td>
+                    <td><input type="text" class="KanriBango"></td>
+                    <td><input type="text" class="KanriMeishou"></td>
+
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><input type="text" class="KanriBango"></td>
+                    <td><input type="text" class="KanriMeishou"></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><input type="text" class="KanriBango"></td>
+                    <td><input type="text" class="KanriMeishou"></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><input type="text" class="KanriBango"></td>
+                    <td><input type="text" class="KanriMeishou"></td>
+                </tr>
+
+
+            </tbody>
+        </table>
+        <input type="button" onclick="entry();" value="登録">
+    </form>
+
+</body>
+
+</html>
