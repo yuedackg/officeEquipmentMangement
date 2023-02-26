@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,36 +11,85 @@
     <script>
         var DBscan = new Array();
         var DBBihin = new Array();
-        
-        function load(){
+        var BihinBangoList = new Array();
+        var ScannBangoList = new Array();
+
+        function load() {
             var ls = localStorage.getItem(DB_scanListName);
-            if ( ls != null ){
+            if (ls != null) {
                 DBscan = JSON.parse(ls);
 
-            }else {
-                DBscan=[];
+            } else {
+                DBscan = [];
 
             }
-            ls = localStorage.getItem( DB_BihinListName);
-            if ( ls != null){
-                DBBihin = JSON.parse( ls );
+            ls = localStorage.getItem(DB_BihinListName);
+            if (ls != null) {
+                DBBihin = JSON.parse(ls);
 
-            }else {
+            } else {
                 DBBihin = [];
 
             }
-            
-            collation ();
+
+            collation();
 
         }
+        // 照合作業を行う
+        function collation() {
+            var UntrackingList = new Array();
+            var NotFoundList = new Array();
 
-        function collation(){
+            // 備品番号テーブルから、作業検証用の配列に番号を移動
+            BihinBangoList = [];
+            for (var i = 0; i < DBBihin.length; i++) {
+                var item = DBBihin[i][0]
+                BihinBangoList.push(item);
+
+            }
+            // スキャンした番号をテーブルから移動
+            ScannBangoList = [];
+            for (var i = 0; i < DBScan.length; i++) {
+                var item = DBscan[i][0];
+                ScannBangoList.push(item);
+
+            }
+
+            // 突き合わせ処理
+            BihinBangoList.sort();
+            ScannBangoList.sort();
+            UntrackingList = [];
+            NotFoundList = [];
+
+            for (var i = 0; i < BihinBangoList.length; i++) {
+                if (ScannBangoList.includes(BihinBangoList[i])) {
+                    console.log(BihinBangoList[i] + "is include.");
+
+                } else {
+                    console.log(BihinBangoList[i] + "is not include.");
+                    UntrackingList.push(BihinBangoList[i]);
+
+                }
+            }
+            for (var i = 0; i < ScannBangoList.length; i++) {
+                if (BihinBangoList.includes(ScannBangoList[i])) {
+                    console.log(ScannBangoList[i] + "is include.");
+                    NotFoundList.push(ScannBangoList[i]);
+
+                } else {
+                    console.log(ScannBangoList[i] + "is not include.");
+                    NotFoundList.push(ScannBangoList[i]);
+
+                }
+            }
+            // 結果の表示
             
         }
     </script>
 </head>
+
 <body>
-    
+
     <table class="table-ichiran">
         <caption>
             備品一覧
@@ -49,8 +99,9 @@
             <th>備品番号</th>
         </thead>
         <tbody>
-            
+
         </tbody>
     </table>
 </body>
+
 </html>
