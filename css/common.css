@@ -1,0 +1,17 @@
+:root{
+    --my-pc-body-width:800px;
+
+}
+
+table,td {
+    border: solid 1px gray;
+
+}
+
+.button {
+    padding: 5px;
+    margin: 5px;
+    border: solid 1px gray;
+    width: 4ex;
+}
+
