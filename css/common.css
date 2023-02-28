@@ -8,6 +8,17 @@ table,td {
 
 }
 
+footer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+footer>div {
+    width: 100%;
+    border-top: solid 1px gray;
+    text-align: center;
+}
+
 .button {
     padding: 5px;
     margin: 5px;

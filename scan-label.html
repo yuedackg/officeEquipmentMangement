@@ -6,17 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>バーコードリーダーテスト(クラス版)</title>
-<style>
-    footer{
-        display: flex;
-        flex-wrap: wrap;
-    }
-    footer > div{
-        width: 100%;
-        border-top: solid 1px gray;
-        text-align: center;
-    }
-</style>
+    <link rel="stylesheet" href="./css/common.css">
+    <style>
+
+    </style>
     <script src="./js/quagga.min.js"></script>
 </head>
 
@@ -26,7 +19,7 @@
     <script src="./js/Constant.js"></script>
     <script src="./js/scan-label.js"></script>
     <script>
- 
+
     </script>
     <table id="sample-table">
         <thead>
@@ -41,9 +34,12 @@
         </tbody>
 
     </table>
-    <input type="text" id="txtOutput" /> 
+    <input type="text" id="txtOutput" />
     <!-- <button onclick="equipmentTouroku();">登録</button> -->
     <button onclick="shougou();">照合</button>
+    <div class="button">
+        <a href="index.html">戻る</a>
+    </div>
 
     <footer>
         <div>

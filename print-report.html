@@ -19,33 +19,45 @@
 </head>
 
 <body onload="load();">
-    <h1>結果の表示部分を作成する</h1>
+    <main>
+        <h1>結果の表示部分を作成する</h1>
+        
+        <table id="table-ichiran">
+            <caption>
+                備品一覧（備品台帳に登録されていないもの）
+            </caption>
+            <thead>
+                <th>備品名</th>
+                <th>備品番号</th>
+            </thead>
+            <tbody>
+        
+            </tbody>
+        </table>
+        
+        <table id="table-ichiran-not-found">
+            <caption>
+                備品一覧（備品台帳に登録されていないもの）
+            </caption>
+            <thead>
+                <th>備品名</th>
+                <th>備品番号</th>
+            </thead>
+            <tbody>
+        
+            </tbody>
+        </table>
+        <div class="button">
+            <a href="index.html">戻る</a>
+        </div>
+    </main>
+ 
 
-    <table id="table-ichiran">
-        <caption>
-            備品一覧（備品台帳に登録されていないもの）
-        </caption>
-        <thead>
-            <th>備品名</th>
-            <th>備品番号</th>
-        </thead>
-        <tbody>
-
-        </tbody>
-    </table>
-
-    <table id="table-ichiran-not-found">
-        <caption>
-            備品一覧（備品台帳に登録されていないもの）
-        </caption>
-        <thead>
-            <th>備品名</th>
-            <th>備品番号</th>
-        </thead>
-        <tbody>
-
-        </tbody>
-    </table>
+    <footer>
+        <div>
+            <span>copyright (c) 2023, CKGMC. ver.02.26.19.30</span>
+        </div>
+    </footer>
 </body>
 
 </html>
