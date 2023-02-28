@@ -61,12 +61,25 @@
 
                 } else {
                     console.log("No " + i + " is data OK.")
+
                     // ここで登録プログラムを作成する
+                    blist.push({
+                        name: domInputsMeisho[i].value, code: domInputsBango[i].value
+                    });
+                    localStorage.setItem(DB_BihinListName, JSON.stringify(blist));
+
+                    // console.log( "show() called.");
+                    // show();
+
+                    // 項目をクリア
+                    console.log("clear item.");
+                    domInputsMeisho[i].value = "";
+                    domInputsBango[i].value = "";
 
                 }
 
             }
-
+            location.href = "./index.html";
 
         }
     </script>
@@ -74,7 +87,6 @@
 
 <body onload="load();">
     <main>
-        <h1>登録プログラムの作成がまだ。</h1>
         <h1>名称登録</h1>
         <form id="myForm">
             <table border="1" id="entryTable">
@@ -126,7 +138,7 @@
             <a href="managemenet-equipment.html">戻る</a>
         </div>
 
-        
+
     </main>
 
 

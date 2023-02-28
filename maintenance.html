@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/common.css">
     <script src="./js/Constant.js"></script>
     <script>
         var DBBihinList = new Array();
@@ -46,32 +45,42 @@
 
             // 表へ追加
             var myTable = document.getElementById("table-maintenance");
-            for (var p of DBBihinList) {
-                console.log(" p -> " + p);
+            for (var i = 0; i < DBBihinList.length; i++) {
+                var trElem = myTable.tBodies[0].insertRow(-1);
+                for (var p in DBBihinList[i]) {
+                    console.log(DBBihinList[i][p]);
+                    var cellElem1 = trElem.insertCell();
+                    cellElem1.appendChild(document.createTextNode(DBBihinList[i][p]));
+                }
+                var cellElem1 = trElem.insertCell();
+                
+                // 削除ボタン要素を追加する
+                const input1 = document.createElement("input");
+                input1.setAttribute("type", "button");
+                input1.setAttribute("value", "削除")
+                input1.setAttribute("onclick", "deleteItem(" + i + ")");
+                
+                // 3列目にボタンを追加する
+                cellElem1.appendChild( input1);
+
             }
-            var trElem = myTable.tBodies[0].insertRow(-1);
-            var cellElem1 = trElem.insertCell();
-            cellElem1.appendChild(document.createTextNode());
-
-            var cellElem2 = trElem.insertCell();
-
         }
 
+        function deleteItem( line){
+            console.log(" function deleteItem("+line+") is called.")
+            DBBihinList.splice(line,1);
+            show();
+        }
+
+        function testcalled( i){
+            console.log( "testcalled() is called.");
+            console.log( "i:" + i);
+        }
     </script>
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/maintenance.css">
     <style>
-        caption,
-        th {
-            border: solid 1px gray;
-        }
 
-        caption {
-            /* width: 20ex; */
-            text-align: center;
-        }
-
-        th {
-            width: 20ex;
-        }
     </style>
 </head>
 
