@@ -33,13 +33,17 @@
 
         // リストを表示する
         function show() {
-            var myRows = document.getElementById("table-maintenance").getElementsByTagName("tr");
-            max = myRows.length;
-            console.log("max=" + max);
+            var myTable = document.getElementById( "table-maintenance");
+            console.log( "delete table -> length:"+myTable.rows.length);
+
+            // var myRows = document.getElementById("table-maintenance").getElementsByTagName("tr");
+            // max = myRows.length;
+            // console.log("max=" + max);
 
             // 表の要素を削除
-            for (var i = 1; i < max; i++) {
-                myRows.deleteRow(-1);
+            for (var i = 1; i < myTable.rows.length; i++) {
+                myTable.tBodies[0].deleteRow(-1);   
+                // myRows.deleteRow(-1);
 
             }
 
@@ -69,6 +73,8 @@
         function deleteItem( line){
             console.log(" function deleteItem("+line+") is called.")
             DBBihinList.splice(line,1);
+            // for debug
+            console.log( DBBihinList);
             show();
         }
 
