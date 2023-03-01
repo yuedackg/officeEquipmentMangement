@@ -11,6 +11,8 @@
     </style>
     <script src="./js/Constant.js"></script>
     <script>
+        var blist = new Array();
+
         function load() {
             if (ls = localStorage.getItem(DB_BihinListName)) {
                 if (ls != null) {
@@ -62,7 +64,11 @@
                 } else {
                     console.log("No " + i + " is data OK.")
                     // ここで登録プログラムを作成する
-
+blist.push( {
+    "name": domInputsBango[i].value , 
+    "code":domInputsMeisho[i].value
+                });
+                save();
                 }
 
             }
