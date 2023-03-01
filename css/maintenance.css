@@ -1,0 +1,15 @@
+
+caption,
+th {
+    border: solid 1px gray;
+}
+
+caption {
+    /* width: 20ex; */
+    text-align: center;
+}
+
+th {
+    width: 20ex;
+}
+

@@ -1,0 +1,28 @@
+:root{
+    --my-pc-body-width:800px;
+
+}
+
+table,td {
+    border: solid 1px gray;
+
+}
+
+footer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+footer>div {
+    width: 100%;
+    border-top: solid 1px gray;
+    text-align: center;
+}
+
+.button {
+    padding: 5px;
+    margin: 5px;
+    border: solid 1px gray;
+    width: 4ex;
+}
+

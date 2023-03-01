@@ -45,53 +45,75 @@
 
             // 表へ追加
             var myTable = document.getElementById("table-maintenance");
-            for (var p of DBBihinList) {
-                console.log(" p -> " + p);
+            for (var i = 0; i < DBBihinList.length; i++) {
+                var trElem = myTable.tBodies[0].insertRow(-1);
+                for (var p in DBBihinList[i]) {
+                    console.log(DBBihinList[i][p]);
+                    var cellElem1 = trElem.insertCell();
+                    cellElem1.appendChild(document.createTextNode(DBBihinList[i][p]));
+                }
+                var cellElem1 = trElem.insertCell();
+                
+                // 削除ボタン要素を追加する
+                const input1 = document.createElement("input");
+                input1.setAttribute("type", "button");
+                input1.setAttribute("value", "削除")
+                input1.setAttribute("onclick", "deleteItem(" + i + ")");
+                
+                // 3列目にボタンを追加する
+                cellElem1.appendChild( input1);
+
             }
-            var trElem = myTable.tBodies[0].insertRow(-1);
-            var cellElem1 = trElem.insertCell();
-            cellElem1.appendChild(document.createTextNode());
-
-            var cellElem2 = trElem.insertCell();
-
         }
 
+        function deleteItem( line){
+            console.log(" function deleteItem("+line+") is called.")
+            DBBihinList.splice(line,1);
+            show();
+        }
+
+        function testcalled( i){
+            console.log( "testcalled() is called.");
+            console.log( "i:" + i);
+        }
     </script>
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/maintenance.css">
     <style>
-        caption,
-        th {
-            border: solid 1px gray;
-        }
 
-        caption {
-            /* width: 20ex; */
-            text-align: center;
-        }
-
-        th {
-            width: 20ex;
-        }
     </style>
 </head>
 
 <body onload="load();">
-    <h1>未完成</h1>
+    <main>
+        <h1>未完成</h1>
 
-    <table id="table-maintenance">
-        <caption>
-            備品操作ページ
-        </caption>
-        <thead>
-            <tr>
-                <th id="th-bangou">備品番号</th>
-                <th id="th-name">備品名</th>
-                <th id="th-operation">操作</th>
-            </tr>
-        </thead>
-        <tbody>
+        <table id="table-maintenance">
+            <caption>
+                備品操作ページ
+            </caption>
+            <thead>
+                <tr>
+                    <th id="th-bangou">備品番号</th>
+                    <th id="th-name">備品名</th>
+                    <th id="th-operation">操作</th>
+                </tr>
+            </thead>
+            <tbody>
 
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+        <div class="button">
+            <a href="index.html">戻る</a>
+        </div>
+
+    </main>
+
+    <footer>
+        <div>
+            <span>copyright (c) 2023, CKGMC. ver.02.26.19.30</span>
+        </div>
+    </footer>
 </body>
 
 </html>

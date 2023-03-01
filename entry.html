@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-
-    </style>
+    <link rel="stylesheet" href="./css/common.css">
     <script src="./js/Constant.js"></script>
+    <script src="./js/entry.js"></script>
+
     <script>
         var blist = new Array();
 
@@ -63,71 +63,93 @@
 
                 } else {
                     console.log("No " + i + " is data OK.")
+
                     // ここで登録プログラムを作成する
-blist.push( {
-    "name": domInputsBango[i].value , 
-    "code":domInputsMeisho[i].value
-                });
-                save();
+
+                    blist.push({
+                        name: domInputsMeisho[i].value, code: domInputsBango[i].value
+                    });
+                    localStorage.setItem(DB_BihinListName, JSON.stringify(blist));
+
+                    // console.log( "show() called.");
+                    // show();
+
+                    // 項目をクリア
+                    console.log("clear item.");
+                    domInputsMeisho[i].value = "";
+                    domInputsBango[i].value = "";
+
                 }
 
             }
-
+            location.href = "./index.html";
 
         }
     </script>
 </head>
 
 <body onload="load();">
-    <h1>登録プログラムの作成がまだ。</h1>
-    <h1>名称登録</h1>
-    <form id="myForm">
-        <table border="1" id="entryTable">
-            <caption>備品登録</caption>
-            <thead>
-                <tr>
-                    <th>番号</th>
-                    <th>管理番号</th>
-                    <th>管理品名称</th>
-                </tr>
-            </thead>
-            <tbody>
+    <main>
+        <h1>名称登録</h1>
+        <form id="myForm">
+            <table border="1" id="entryTable">
+                <caption>備品登録</caption>
+                <thead>
+                    <tr>
+                        <th>番号</th>
+                        <th>管理番号</th>
+                        <th>管理品名称</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-                <tr>
-                    <td>1</td>
-                    <td><input type="text" class="KanriBango"></td>
-                    <td><input type="text" class="KanriMeishou"></td>
-                </tr>
-
-
-                <tr>
-                    <td>2</td>
-                    <td><input type="text" class="KanriBango"></td>
-                    <td><input type="text" class="KanriMeishou"></td>
-
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td><input type="text" class="KanriBango"></td>
-                    <td><input type="text" class="KanriMeishou"></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td><input type="text" class="KanriBango"></td>
-                    <td><input type="text" class="KanriMeishou"></td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td><input type="text" class="KanriBango"></td>
-                    <td><input type="text" class="KanriMeishou"></td>
-                </tr>
+                    <tr>
+                        <td>1</td>
+                        <td><input type="text" class="KanriBango"></td>
+                        <td><input type="text" class="KanriMeishou"></td>
+                    </tr>
 
 
-            </tbody>
-        </table>
-        <input type="button" onclick="entry();" value="登録">
-    </form>
+                    <tr>
+                        <td>2</td>
+                        <td><input type="text" class="KanriBango"></td>
+                        <td><input type="text" class="KanriMeishou"></td>
 
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><input type="text" class="KanriBango"></td>
+                        <td><input type="text" class="KanriMeishou"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><input type="text" class="KanriBango"></td>
+                        <td><input type="text" class="KanriMeishou"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><input type="text" class="KanriBango"></td>
+                        <td><input type="text" class="KanriMeishou"></td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+            <input type="button" onclick="entry();" value="登録">
+        </form>
+        <div class="button">
+            <a href="managemenet-equipment.html">戻る</a>
+        </div>
+
+
+    </main>
+
+
+    <footer>
+        <div>
+            <span>copyright (c) 2023, CKGMC. ver.02.26.19.30</span>
+        </div>
+    </footer>
 </body>
 
 </html>
